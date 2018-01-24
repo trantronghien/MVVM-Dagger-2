@@ -1,0 +1,89 @@
+apply plugin: 'com.android.application'
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.7'
+    }
+}
+
+
+project.ext {
+    supportLibraryVersion = "26.1.0"
+    daggerVersion = "2.13"
+//    butterKnifeVersion = "8.8.1"
+    rxJavaVersion = "2.1.0"
+    rxAndroidVersion = "2.0.1"
+    retrofitVersion = "2.3.0"
+    okHttpVersion = "3.9.1"
+    picassoVersion = "2.5.2"
+//    timberVersion = "4.6.0"
+//    lifecycleVersion = "1.0.0"
+}
+
+android {
+    compileSdkVersion 26
+    defaultConfig {
+        applicationId "com.example.hientt17.mvvm_example"
+        minSdkVersion 20
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        compileOptions {
+            sourceCompatibility JavaVersion.VERSION_1_8
+            targetCompatibility JavaVersion.VERSION_1_8
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+    dexOptions {
+        incremental false
+        javaMaxHeapSize "2048M"
+        preDexLibraries = false
+    }
+}
+
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "com.android.support:appcompat-v7:$project.supportLibraryVersion"
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    compile 'org.parceler:parceler-api:1.0.1'
+
+    // rx
+    implementation "io.reactivex.rxjava2:rxjava:$project.rxJavaVersion"
+    implementation "io.reactivex.rxjava2:rxandroid:$project.rxAndroidVersion"
+
+    // Dagger core
+    annotationProcessor "com.google.dagger:dagger-compiler:$project.daggerVersion"
+    implementation "com.google.dagger:dagger:$project.daggerVersion"
+
+    // retrofit
+    compile group: 'com.squareup.retrofit2', name: 'retrofit', version: "$project.retrofitVersion"
+    compile group: 'com.squareup.okhttp3', name: 'okhttp', version: "$project.okHttpVersion"
+    compile group: 'com.squareup.retrofit2', name: 'converter-gson', version: "$project.retrofitVersion"
+
+
+    implementation "com.android.support:recyclerview-v7:$project.supportLibraryVersion"
+    compile "com.squareup.picasso:picasso:$project.picassoVersion"
+
+    // Lifecycle
+//    implementation "android.arch.lifecycle:runtime:$project.lifecycleVersion"
+//    implementation "android.arch.lifecycle:extensions:$project.lifecycleVersion"
+//    annotationProcessor "android.arch.lifecycle:compiler:$project.lifecycleVersion"
+}
