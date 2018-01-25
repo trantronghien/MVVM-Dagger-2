@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import com.example.hientt17.example.R;
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity implements MainDataView {
     private RecyclerView recyclerView;
     private GitRepositoryAdapter adapter;
     private List<GitHubRepository> listRep;
+    FrameLayout loading;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,16 +43,20 @@ public class MainActivity extends AppCompatActivity implements MainDataView {
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         recyclerView.setAdapter(adapter);
 
+        loading = findViewById(R.id.loading);
+
     }
 
     @Override
     public void onComplete(List<GitHubRepository> list) {
         this.listRep = list;
-        adapter.notifyDataSetChanged();
+        adapter.notifyDataChange(listRep);
+        loading.setVisibility(View.GONE);
     }
 
     @Override
     public void onFailed(String errMess) {
         Toast.makeText(this, errMess, Toast.LENGTH_SHORT).show();
+        loading.setVisibility(View.GONE);
     }
 }

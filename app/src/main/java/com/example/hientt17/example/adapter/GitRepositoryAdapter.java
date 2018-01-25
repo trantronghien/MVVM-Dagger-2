@@ -36,8 +36,12 @@ public class GitRepositoryAdapter extends RecyclerView.Adapter<GitRepositoryAdap
     @Override
     public void onBindViewHolder(ViewHoder holder, int position) {
         ViewDataBinding viewDataBinding = holder.getViewDataBinding();
-
         viewDataBinding.setVariable(BR.modelGithub, mMyModels.get(position));
+    }
+
+    public void notifyDataChange(List<GitHubRepository> listRep){
+        mMyModels = listRep;
+        notifyDataSetChanged();
     }
 
     @Override

@@ -14,7 +14,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="80dp"
         android:orientation="vertical"
         android:weightSum="2">
 
@@ -23,12 +23,15 @@
             android:layout_height="wrap_content">
 
             <TextView
+                android:textColor="@color/text"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="3dp"
                 android:layout_weight="0.7"
                 android:text="Reponsitory: " />
             <TextView
+
+                android:textColor="@color/text"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="3dp"
@@ -36,6 +39,7 @@
                 android:text="@{modelGithub.name}" />
 
             <TextView
+                android:textColor="@color/text"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="3dp"
@@ -52,16 +56,23 @@
             android:orientation="horizontal">
 
             <TextView
+                android:textColor="@color/text"
                 android:text="Mô tả: "
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
             <TextView
+                android:textColor="@color/text"
                 android:textStyle="bold"
-                android:textColor="#000000"
                 android:text="@{modelGithub.description}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
-
         </LinearLayout>
+
+        <TextView
+            android:layout_marginBottom="1sp"
+            android:gravity="end|bottom"
+            android:layout_width="match_parent"
+            android:background="@color/colorAccent"
+            android:layout_height="1sp" />
     </LinearLayout>
 </layout>
