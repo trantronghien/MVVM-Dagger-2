@@ -20,11 +20,10 @@ public class RepositoryListViewModel extends AndroidViewModel{
 
     public RepositoryListViewModel(@NonNull Application application) {
         super(application);
-
-
     }
 
     public void getListRepository(String User){
+        User = !User.isEmpty() ? User : "TranTrongHien";
         repositoryList = ProjectRepository.getInstance().getProjectList(User);
     }
 

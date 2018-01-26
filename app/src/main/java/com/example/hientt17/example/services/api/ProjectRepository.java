@@ -63,8 +63,12 @@ public class ProjectRepository {
         gitHubService.getProjectDetails(userID, projectName).enqueue(new Callback<Project>() {
             @Override
             public void onResponse(Call<Project> call, Response<Project> response) {
-                simulateDelay();
-                data.setValue(response.body());
+                if (response.isSuccessful()){
+                    simulateDelay();
+                    data.setValue(response.body());
+                } else{
+                    onFailure(call, new Exception("ERROR CODE"));
+                }
             }
 
             @Override

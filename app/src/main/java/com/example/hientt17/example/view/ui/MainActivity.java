@@ -2,11 +2,10 @@ package com.example.hientt17.example.view.ui;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.Toast;
 
 import com.example.hientt17.example.R;
 import com.example.hientt17.example.services.model.Project;
-import com.example.hientt17.example.view.ui.fragment.DetailProjectFragment;
+import com.example.hientt17.example.view.ui.fragment.ProjectDetailFragment;
 import com.example.hientt17.example.view.ui.fragment.ProjectListFragment;
 
 public class MainActivity extends AppCompatActivity {
@@ -28,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void showList(Project project, String userName) {
         userName = userName.isEmpty() ? project.owner.login : userName;
-        DetailProjectFragment detailfagment = DetailProjectFragment.forProject(project.name, userName);
+        ProjectDetailFragment detailfagment = ProjectDetailFragment.forProject(project.name, userName);
 
         getSupportFragmentManager()
                 .beginTransaction()

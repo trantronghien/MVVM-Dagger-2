@@ -69,7 +69,6 @@ public class ProjectListFragment extends LifecycleFragment {
             if (listRepo != null) {
                 binding.setIsLoading(false);
                 projectAdapter.notifyDataChange(listRepo);
-
             }else{
                 Toast.makeText(getActivity(), "Khong tim thay user nay", Toast.LENGTH_SHORT).show();
                 binding.setIsLoading(false);
